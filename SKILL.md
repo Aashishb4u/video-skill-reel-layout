@@ -40,7 +40,15 @@ The top of the frame (y 0 to about 0.37) stays black. He adds the title strip (a
 
 ## Stage 2: Aashish Cooks on this layout
 
-Only after he says to continue. Use the `aashish-cooks` skill, with these rules learned on his reels:
+Only after he says to continue.
+
+**Dependency check first.** Stage 2 needs the Aashish Cooks skill. Before anything else, check that it is installed: it appears as `aashish-cooks` in the available skills list, or `~/.claude/skills/aashish-cooks/scripts/cook.py` exists. If it is missing, stop and reply only with:
+
+> Stage 2 needs the Aashish Cooks skill, and it isn't installed. Install it from https://github.com/Aashishb4u/video-skill-aashish-cooks (clone it, then link the folder to `~/.claude/skills/aashish-cooks`), start a new Claude Code session, and ask for stage 2 again. Stage 1 works without it.
+
+Do not try to rebuild Cooks features by hand.
+
+Use the `aashish-cooks` skill, with these rules learned on his reels:
 
 - **Export:** `setExportSettings(dynamicRange SDR, resolution "1080x1920", resolutionType HD, aspectRatio nineBySixteen, quality High)`, then `export` into the sandbox folder. All three of resolutionType, aspectRatio and quality are needed. Output comes out at 60 fps; re-encode to 30 fps with ffmpeg. Trim to the real length (stray clips past the end can make the export much longer).
 - **Intro:** if he has an intro clip at the start (about 0 to 3.5 s), add nothing there unless he asks. Start captions after it with a trimmed words file.
